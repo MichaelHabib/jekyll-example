@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<ul>
+    {% for page in site.pages %}
+
+    {% unless page.layout contains 'archive' %}
+    <li>
+        <a href="{{ page.url }}">
+            {% if page.title %}
+            {{ page.title }}
+            {% else %}
+            {{ page.url }}
+            {% endif %}
+        </a>
+    </li>
+    {% endunless %}
+    {% endfor %}
+
+</ul>
+

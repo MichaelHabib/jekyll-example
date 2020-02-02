@@ -1,1 +1,53 @@
-# jekyll-example
+= jekyll-example
+
+== ToDo
+
+
+- [x] Index of all page
+- [x] Index of all posts
+- [x] Index of all categories
+- [x] Archive pages using jekyll-archives
+
+
+- Wiki Collection
+** [x] Create wiki collection
+** [x] Custom wiki permalink.
+** [ ] Allow wiki page namespaces, categories & tags
+
+- Sitemap
+** Auto generate siemap
+** Add wiki collection to sitemap
+
+
+- Home Page Template Changes
+** [ ] Custom Home Page template
+** [ ]
+
+- [ ] Enable URL specific template from _config.yml
+** [ ] Remove page specific template config from content files.
+
+
+- Post Template Changes
+** [x] Clickable categories
+
+- Posts Template Changes
+** [x] Clickable categories
+
+- Category Template Changes
+** [ ]
+
+- Categories Template Changes
+** [ ] List primary categories by showing the first category from each post.
+** [ ]
+
+- Archive Template Changes
+** [ ]
+
+- [ ] SMM & Analytics Integrations
+** [ ] GTM
+** [ ] FB Pixel
+
+== Useful Links
+- https://jekyllrb.com/docs/configuration/default/[All Default Config]
+- https://github.com/asciidoctor/jekyll-asciidoc[Jekyll Asciidoc]
+

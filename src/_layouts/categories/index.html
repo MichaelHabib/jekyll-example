@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% assign categories = site.archives | where: "type","category" %}
+
+{% for category in categories %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h3><a href="{{ category.url }}">{{ category.title }}</a></h3>
+    </div>
+    <ul class="list-group ">
+        {% for post in category.posts %}
+        <li class="list-group-item tag-head ">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <span class="pl-4">
+                            {% include categories/entry-categories-pills.html categories=post.categories %}
+            </span>
+
+
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+

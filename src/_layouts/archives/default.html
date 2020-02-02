@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{{ content }}
+
+{% for post in page.posts %}
+<div class="card mb-4">
+    <div class="card-header">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+    </div>
+    <ul class="card-body ">
+        {% include categories/entry-categories-pills.html categories=post.categories %}
+    </ul>
+</div>
+{% endfor %}

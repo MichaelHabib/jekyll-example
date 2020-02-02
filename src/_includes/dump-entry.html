@@ -1,0 +1,24 @@
+<div class="container shadow-sm p-4 mb-5 bg-warning">
+
+    <ul>
+        <li>Title : {{ include.entry.title }}</li>
+        <li>Type : {{ include.entry.type }}</li>
+        <li>Layout : {{ include.entry.layout }}</li>
+        <li>Collection : {{ include.entry.collection }}</li>
+        <li><a href="{{ include.entry.url }}">Page URL : {{ include.entry.url }}</a></li>
+        <li>
+            Categories :
+            <ul>
+                {% for category in include.entry.categories %}
+                <li>{{ category }}</li>
+                {% endfor %}
+
+            </ul>
+        </li>
+        <li>
+            Entry: {{ include.entry }}
+        </li>
+        </li>
+
+    </ul>
+</div>

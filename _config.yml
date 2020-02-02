@@ -13,57 +13,85 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@example.com
+title: Michael Habib's Notebook
+email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "/home/user/workspace/projects_data/jekyll-example/_dist" # the subpath of your site, e.g. /blog
-#baseurl: ""
-#url: "localhost" # the base hostname & protocol for your site, e.g. http://example.com
-url: ""
-twitter_username: jekyllrb
-github_username:  jekyll
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "notebook.michaelhabib.name" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
-markdown: kramdown
-#theme: minima
-#theme: alembic-jekyll-theme
+#markdown: kramdown
 #theme: jekyll-theme-minimal
-#theme: minimal-mistakes-jekyll
-#theme: jekyll-theme-hydeout
+
 plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-archives
+  - jekyll-asciidoc
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
 
-#source: ./src
-destination: ./_dist
+asciidoc:
+  ext: asciidoc,adoc,ad
+
+asciidoctor: {}
+
+include:
+  - content/_wiki
+exclude:
+  - .idea
+
+source: src
+destination: _dist
+collections_dir: content
+#layouts_dir: _theme/layouts
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Archives Plugin Config
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+
+jekyll-archives:
+  enabled: all
+  layout: archives/default
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
+
+# Collections
+collections:
+  wiki:
+    output: true
+    categories: true
+    permalink: /:path:output_ext
+
 
 # Defaults
 defaults:
-  # _posts
+  - scope:
+      path: "/"
+      type: "pages"
+    values:
+      layout: "pages/home"
   - scope:
       path: ""
-      type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: # true
-      share: true
-      related: true
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "posts/post"

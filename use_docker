@@ -1,0 +1,25 @@
+export JEKYLL_VERSION=3.8
+export PROJECT_NAME=jekyll-example
+
+#SS : Source script
+alias ss="source use_docker"
+
+alias docker-jekyll-attach-OLD='sudo docker start $PROJECT_NAME && sudo docker exec -it $PROJECT_NAME /bin/bash '
+
+
+alias dnew='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION bash'
+alias dnew-fresh-install='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll new .'
+alias dnew-then-build='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll build'
+
+alias drestart='sudo docker start -ai $PROJECT_NAME '
+alias dstop='sudo docker stop $PROJECT_NAME'
+alias ddelete='sudo docker container rm $PROJECT_NAME'
+
+alias dexec='sudo docker start -ai $PROJECT_NAME && sudo docker exec -it $PROJECT_NAME $*'
+
+
+
+alias dserve='sudo docker start -ai $PROJECT_NAME && sudo docker exec -it jekyll serve --watch --drafts --trace'
+
+
+alias docker-list-all-container="sudo docker ps -aq"
