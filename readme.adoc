@@ -9,10 +9,14 @@
 - [x] Archive pages using jekyll-archives
 
 
-- Wiki Collection
+- [ ] Wiki Collection
 ** [x] Create wiki collection
 ** [x] Custom wiki permalink.
 ** [ ] Allow wiki page namespaces, categories & tags
+
+- [ ] Projects Collection
+**
+
 
 - Sitemap
 ** Auto generate siemap
@@ -46,6 +50,10 @@
 - [ ] SMM & Analytics Integrations
 ** [ ] GTM
 ** [ ] FB Pixel
+
+
+- Primary Navigation Setup
+** [ ] Nav items : Home | About | Wiki | Blog | Projects | Contact
 
 == Useful Links
 - https://jekyllrb.com/docs/configuration/default/[All Default Config]
