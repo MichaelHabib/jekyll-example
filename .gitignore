@@ -2,3 +2,4 @@ _site
 _dist
 .sass-cache
 .jekyll-metadata
+content
