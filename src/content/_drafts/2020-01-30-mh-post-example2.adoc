@@ -1,4 +1,0 @@
-= MH Post Example 2 using AsciiDoc
-
-
-asdasdsadsadaasd
