@@ -1,2 +1,2 @@
-= Information Technology Index
+= Information Technology
 :page-layout: wiki/namespace/index

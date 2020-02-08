@@ -1,3 +1,0 @@
-= Wiki Index Page
-:page-permalink: /wiki/
-:page-layout: wiki/index

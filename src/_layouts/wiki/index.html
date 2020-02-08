@@ -1,22 +1,9 @@
 ---
 layout: default
+menu_links:
+    - donate: "/donate"
+    - shop: "/shop"
 ---
 
-{% assign wiki_pages = site.wiki %}
 
-
-<ul>
-    {% for page in wiki_pages %}
-
-    <li>
-        <a href="{{ page.url }}">
-            {% if page.title %}
-            {{ page.title }}
-            {% else %}
-            {{ page.url }}
-            {% endif %}
-        </a>
-    </li>
-    {% endfor %}
-
-</ul>
+{{ content }}
