@@ -42,6 +42,8 @@ include:
   - content/_wiki
 exclude:
   - .idea
+  - content/.git
+  - src/content/.git
 
 source: src
 destination: _dist
