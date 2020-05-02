@@ -78,7 +78,7 @@ collections:
   wiki:
     output: true
     categories: true
-    permalink: /:path
+    permalink: /:path:output_ext
 
 
 # Defaults
