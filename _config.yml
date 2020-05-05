@@ -46,7 +46,7 @@ exclude:
   - src/content/.git
 
 source: src
-destination: _dist
+destination: _site
 collections_dir: content
 #layouts_dir: _theme/layouts
 
