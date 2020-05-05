@@ -12,6 +12,12 @@ Create a simple Jekyll theme that supports BootStrap CSS Framework & Asciidoc Ma
 - Initiate jekyll site by running `jeykyll new .` then start the build process with `jekyll build ` .
 - Check the `use_docker` file for docker command examples .
 
+
+To upload the build results to an sftp server :
+- Encrypt then add sftp authentication details to .travis.yml . Instructions can be found on https://docs.travis-ci.com/user/encryption-keys/ .
+- Remember to add the `--pro` option to the `travis` command when using travis-ci.com instead of the .org counterpart .
+
+
 == Build Process
 
 

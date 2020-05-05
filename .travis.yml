@@ -1,57 +1,36 @@
 language: ruby
 rvm:
-  - 2.6.3
-
+- 2.6.3
 env:
   global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-    - 'SFTP_USER=[user]'
-    - 'SFTP_PASSWORD=[password]'
-    - 'SFTP_KEY=[base64-encoded-rsa-key]'
-
-
-#before_script:
-#  - chmod +x ./script/cibuild # or do this locally and commit
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: JJOomNejBG9YU/NyPV7tvuwWCKZYna6R35Hqg5poX2YZccuGcCBuqeJiwlVdjZLkqI/ptP4idjS+Uy9kYVPJx9cCqRVHxfNYIP4PQ8fAxce6xXkpsIoRvvFR0aBPS+nZVdL+HBXYWW/QSdSNhZCypIW4L6qdpGrwEDY5Scw+HYlWo7ztXkXb2gir7ul+u0jmvZ6SfqL+BPFVAgWNGEbxYL+a90cPDUiC0LlGCRJUiPQZXi9vs2afpnT1m34pqeUsIxMXsXu4DMcoiLKPQWgWENKO2tCQUqTfZmUBz/KjrLThcyWUjUtDTyKHjAulCaa9gr+XDlaU4k1Z46wlYCNJUi45xVurcVPrUH8rba3t/qDxz2TPnlSt6TGhDFwyEXxWfOkRmLbJuP+Yh7pyBhqoc3LUqqAJO9Lzr8snDkGYx/mo0MWhhrKLpUVBs6najrVrC56NZiv3G02WCcZPkLxhWKW/S2i+82/6z19yw+2q39bEsxARU9608HtZw2bAQCfju2OkqqTua+iX68B5ysUzTdf8IhrqNeiR43C4pjdgCzxChkkKJOW6kIUjMWqpJL/vKwMtQrsN4m4JzMTE8nuw1h0Gu2mWLvfAoVPg9gTt7uurg0kTkYvl6556yEEO1etdeHwIol6Ml/HmyacOtXcz+LdhYGw49H8Cs4OSc+G0mwQ=
+  - secure: CThwwsoYf+RwaGlx/5xPmp22yN2zV3c3yH+OfCnf10MExXlfJPylVRWxOwjf80XFEfMoFsUCS+gLKZnpp3ZeXDAATnOI7uHC9LoQP8blRm6fOd1PHLy4t5a3XdKP6L3TIiPuyRELZYW7WK21mt3P1qPvEfc2qTB9ydirygnj6KKwk6RpZdfB56sdYs/AxS4QWeDn1MlLhMHTzG9VrhZrEFyKVCpPzupw3HOjRK5lTvWrk9PHzL7FhZ7GHVDhoHG9brzy5jPFOP+3NNaG3Knjukmga+QieZLqWKqM6+KADSlfzQcXOAGsIk2BZLog26CjCrxmSBfeNuuUpxNdIoWdGjzayr+Uqk4VHZ51lzD7z/xMK8sL6Bmc+ly/Oue48HCURXcfKMpnGm1G4BjVcW241T909FMDfSDD25VhXUZKUDcKufVBLbedFLROrbai+ip0FyUql8aJlPxttfrM+/GOjHiJ05oiDraU6TO0r8XSgmkQqLeGEso5ieu41XwBZR7cL7B6IolbdTW4suaqRR2mU6LsheIyfg2iblQM1jjdkzh4PRgQsTm8EBiogjjq25g4uaezkUfqpdByQ1YxppcVr0i9HtN1JDBmxCzd/xINTDrdW+4ldHo22t4GTWEpFYZMMhct6vg0yVaNSzA998HqVFE9hkuxnRbnkyOm9MUwcKs=
+  - SFTP_KEY=[base64-encoded-rsa-key]
 
 script:
-  - jekyll build
-  -
+- jekyll build
 before_install:
-  - git submodule update --init --recursive
-## Assume bundler is being used, therefore
-# the `install` step will run `bundle install` by default.
+- git submodule update --init --recursive
 install:
-#  - git submodule update --init --recursive
-  - gem install bundler
-  - bundle install
-
+- gem install bundler
+- bundle install
 after_success:
-  - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
-  - curl --ftp-create-dirs
-    -T filename
-    --key /tmp/sftp_rsa
-    sftp://${SFTP_USER}:${SFTP_PASSWORD}@example.com/directory/filename
-
-## branch whitelist, only for GitHub Pages
+- echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
+- curl --ftp-create-dirs -T filename --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@example.com/directory/filename
 branches:
   only:
-    - master
-    - gh-pages     # test the gh-pages branch
-    - /^deploy-.*$/ # build any page with the deploy prefix
-    - /pages-(.*)/ # test every branch which starts with "pages-"
-
+  - master
+  - gh-pages
+  - "/^deploy-.*$/"
+  - "/pages-(.*)/"
 addons:
   apt:
     packages:
-      - libcurl4-openssl-dev
+    - libcurl4-openssl-dev
 git:
   submodules: true
-## route your build to the container-based infrastructure for a faster build
 sudo: false
-
-## caching bundler gem packages will speed up build
 cache: bundler
-
-# Optional: disable email notifications about the outcome of your builds
 notifications:
   email: false
