@@ -1,7 +1,11 @@
-= jekyll-example
+= MH Jekyll Theme
+
+This theme used for www.notebook.michaelhabib.name .
+== Usage
+
+- Check the `use_docker` file for docker command examples .
 
 == ToDo
-
 
 - [x] Index of all page
 - [x] Index of all posts
