@@ -2,38 +2,55 @@ language: ruby
 rvm:
   - 2.6.3
 
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - 'SFTP_USER=[user]'
+    - 'SFTP_PASSWORD=[password]'
+    - 'SFTP_KEY=[base64-encoded-rsa-key]'
+
+
 #before_script:
 #  - chmod +x ./script/cibuild # or do this locally and commit
 
 script:
-#  - gem update
   - jekyll build
-
-# Assume bundler is being used, therefore
+  -
+before_install:
+  - git submodule update --init --recursive
+## Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
-
 install:
+#  - git submodule update --init --recursive
   - gem install bundler
   - bundle install
 
-# branch whitelist, only for GitHub Pages
-#branches:
-#  only:
-#    - gh-pages     # test the gh-pages branch
-#    - /pages-(.*)/ # test every branch which starts with "pages-"
+after_success:
+  - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
+  - curl --ftp-create-dirs
+    -T filename
+    --key /tmp/sftp_rsa
+    sftp://${SFTP_USER}:${SFTP_PASSWORD}@example.com/directory/filename
 
-env:
-  global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+## branch whitelist, only for GitHub Pages
+branches:
+  only:
+    - master
+    - gh-pages     # test the gh-pages branch
+    - /^deploy-.*$/ # build any page with the deploy prefix
+    - /pages-(.*)/ # test every branch which starts with "pages-"
 
 addons:
   apt:
     packages:
       - libcurl4-openssl-dev
+git:
+  submodules: true
+## route your build to the container-based infrastructure for a faster build
+sudo: false
 
-sudo: false # route your build to the container-based infrastructure for a faster build
-
-cache: bundler # caching bundler gem packages will speed up build
+## caching bundler gem packages will speed up build
+cache: bundler
 
 # Optional: disable email notifications about the outcome of your builds
 notifications:

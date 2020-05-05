@@ -1,12 +1,21 @@
 = MH Jekyll Theme
 
-This theme used for www.notebook.michaelhabib.name .
+This is a Jekyll theme used for www.notebook.michaelhabib.name .
+
+== Goals
+Create a simple Jekyll theme that supports BootStrap CSS Framework & Asciidoc Markup Language, in addition to useful build tools & community Asciidoc extensions.
+
 == Usage
 
 - Insure gem bundler installed with `gem install bundler` .
 - Install jekyll and other gems using `bundler install` .
 - Initiate jekyll site by running `jeykyll new .` then start the build process with `jekyll build ` .
 - Check the `use_docker` file for docker command examples .
+
+== Build Process
+
+
+== Dependencies & Technologies Used
 
 == ToDo
 
