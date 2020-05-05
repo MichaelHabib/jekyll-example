@@ -44,6 +44,7 @@ exclude:
   - .idea
   - content/.git
   - src/content/.git
+  - vendor
 
 source: src
 destination: _site
