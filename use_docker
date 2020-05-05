@@ -11,7 +11,7 @@ alias dnew='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p
 alias dnew-fresh-install='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll new .'
 alias dnew-then-build='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll build'
 
-alias drestart='sudo docker start -a -it $PROJECT_NAME '
+alias drestart='sudo docker start -a -i $PROJECT_NAME '
 alias dstop='sudo docker stop $PROJECT_NAME'
 alias ddelete='sudo docker container rm $PROJECT_NAME'
 
