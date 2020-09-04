@@ -1,25 +1,23 @@
-export JEKYLL_VERSION=3.8
-export PROJECT_NAME=jekyll-example
+export Image_Name=jekyll/jekyll
+export Image_Version=3.8
+export Container_Name=mh-jekyll-theme
 
-#SS : Source script
+## SS : Source script
 alias ss="source use_docker"
 
-alias docker-jekyll-attach-OLD='sudo docker start $PROJECT_NAME && sudo docker exec -it $PROJECT_NAME /bin/bash '
 
+alias dnew='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -it $Image_Name:$Image_Version bash'
+alias dnew-fresh-install='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$Image_Version jekyll new .'
+alias dnew-then-build='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$Image_Version jekyll build'
 
-alias dnew='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -it -d jekyll/jekyll:$JEKYLL_VERSION bash'
-alias dnew-fresh-install='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll new .'
-alias dnew-then-build='sudo docker run --name $PROJECT_NAME --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$JEKYLL_VERSION jekyll build'
+alias drestart='sudo docker start -a -i $Container_Name '
+alias dattach='sudo docker start $Container_Name && sudo docker exec -it $Container_Name /bin/bash '
+alias dstop='sudo docker stop $Container_Name'
+alias ddelete='sudo docker container rm $Container_Name'
 
-alias drestart='sudo docker start -a -i $PROJECT_NAME '
-alias dstop='sudo docker stop $PROJECT_NAME'
-alias ddelete='sudo docker container rm $PROJECT_NAME'
-
-alias dexec='sudo docker start -ai $PROJECT_NAME && sudo docker exec -it $PROJECT_NAME $*'
-
-
-
-alias dserve='sudo docker start -ai $PROJECT_NAME && sudo docker exec -it jekyll serve --watch --drafts --trace'
-
+alias dexec='sudo docker start $Container_Name && sudo docker exec -it $Container_Name $*'
 
 alias dls='sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.CreatedAt}}"'
+
+## WIP
+alias dserve='sudo docker start $Container_Name && sudo docker exec -it $Container_Name jekyll serve --watch --drafts --trace'

@@ -3,7 +3,8 @@
 
 {% if index_page %}
 
-    <h2><a href="{{ index_page.url }}">{{ index_page.title }}</a></h2>
+<!--    <h2><a href="{{ index_page.url }}">{{ index_page.title }}</a></h2>-->
+    <h2>{{ index_page.title }}</h2>
     <ul>
         {% for page in site.wiki | sort: "url" %}
         {% if page.path contains include.namespace and page.path != index_page_path%}
