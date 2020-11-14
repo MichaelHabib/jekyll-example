@@ -1,26 +1,25 @@
 {% assign index_page_path = "_wiki/" |append: include.namespace | append: "/index.adoc" %}
 {% assign index_page = site.wiki | where: "path", index_page_path | first  %}
-
-{% if index_page %}
-
-<!--    <h2><a href="{{ index_page.url }}">{{ index_page.title }}</a></h2>-->
-    <h2>{{ index_page.title }}</h2>
-    <ul>
-        {% for page in site.wiki | sort: "url" %}
-        {% if page.path contains include.namespace and page.path != index_page_path%}
-        <li>
-            <a href="{{ page.url }}">
-
-                {{ page.title }}
-
-            </a>
-        </li>
+{% assign pages = site.wiki | where: "path", index_page_path | first  %}
 
 
-        {% endif %}
+<!--{#% if index_page %#}-->
 
+<h2><a href="{{ index_page.url }}">{{ index_page.title }}</a></h2>
+<!--    <h2>{{ index_page.title }}</h2>-->
+<ul>
+    {% for page in site.wiki | sort: "url" %}
+    {% if page.path contains include.namespace and page.path != index_page_path %}
+    <li>
+        <a href="{{ page.url }}">
 
-        {% endfor %}
-    </ul>
+            {{ page.title }}
+
+        </a>
+    </li>
+
+    {% endif %}
+    {% endfor %}
+</ul>
 <hr/>
-{% endif %}
+<!--{#% endif %#}-->

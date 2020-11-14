@@ -19,6 +19,12 @@ To upload the build results to an sftp server :
 ** https://docs.travis-ci.com/user/deployment/custom/
 - Remember to add the `--pro` option to the `travis` command when using travis-ci.com instead of the .org counterpart .
 
+=== Commands & Code Samples
+----
+jekyll serve --watch --port 3897 --host 0.0.0.0 --drafts --trace
+
+
+----
 
 == Build Process
 

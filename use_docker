@@ -6,9 +6,7 @@ export Container_Name=mh-jekyll-theme
 alias ss="source use_docker"
 
 
-alias dnew='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -it $Image_Name:$Image_Version bash'
-alias dnew-fresh-install='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$Image_Version jekyll new .'
-alias dnew-then-build='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3000:4000 -itd jekyll/jekyll:$Image_Version jekyll build'
+alias dnew='sudo docker run --name $Container_Name --volume="$PWD:/srv/jekyll"  -p 3897:3897 -it $Image_Name:$Image_Version bash'
 
 alias drestart='sudo docker start -a -i $Container_Name '
 alias dattach='sudo docker start $Container_Name && sudo docker exec -it $Container_Name /bin/bash '
@@ -19,5 +17,3 @@ alias dexec='sudo docker start $Container_Name && sudo docker exec -it $Containe
 
 alias dls='sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.CreatedAt}}"'
 
-## WIP
-alias dserve='sudo docker start $Container_Name && sudo docker exec -it $Container_Name jekyll serve --watch --drafts --trace'
