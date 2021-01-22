@@ -2,12 +2,6 @@ language: ruby
 rvm:
   - 2.6.3
 env:
-  global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    - secure: JJOomNejBG9YU/NyPV7tvuwWCKZYna6R35Hqg5poX2YZccuGcCBuqeJiwlVdjZLkqI/ptP4idjS+Uy9kYVPJx9cCqRVHxfNYIP4PQ8fAxce6xXkpsIoRvvFR0aBPS+nZVdL+HBXYWW/QSdSNhZCypIW4L6qdpGrwEDY5Scw+HYlWo7ztXkXb2gir7ul+u0jmvZ6SfqL+BPFVAgWNGEbxYL+a90cPDUiC0LlGCRJUiPQZXi9vs2afpnT1m34pqeUsIxMXsXu4DMcoiLKPQWgWENKO2tCQUqTfZmUBz/KjrLThcyWUjUtDTyKHjAulCaa9gr+XDlaU4k1Z46wlYCNJUi45xVurcVPrUH8rba3t/qDxz2TPnlSt6TGhDFwyEXxWfOkRmLbJuP+Yh7pyBhqoc3LUqqAJO9Lzr8snDkGYx/mo0MWhhrKLpUVBs6najrVrC56NZiv3G02WCcZPkLxhWKW/S2i+82/6z19yw+2q39bEsxARU9608HtZw2bAQCfju2OkqqTua+iX68B5ysUzTdf8IhrqNeiR43C4pjdgCzxChkkKJOW6kIUjMWqpJL/vKwMtQrsN4m4JzMTE8nuw1h0Gu2mWLvfAoVPg9gTt7uurg0kTkYvl6556yEEO1etdeHwIol6Ml/HmyacOtXcz+LdhYGw49H8Cs4OSc+G0mwQ=
-    - secure: CThwwsoYf+RwaGlx/5xPmp22yN2zV3c3yH+OfCnf10MExXlfJPylVRWxOwjf80XFEfMoFsUCS+gLKZnpp3ZeXDAATnOI7uHC9LoQP8blRm6fOd1PHLy4t5a3XdKP6L3TIiPuyRELZYW7WK21mt3P1qPvEfc2qTB9ydirygnj6KKwk6RpZdfB56sdYs/AxS4QWeDn1MlLhMHTzG9VrhZrEFyKVCpPzupw3HOjRK5lTvWrk9PHzL7FhZ7GHVDhoHG9brzy5jPFOP+3NNaG3Knjukmga+QieZLqWKqM6+KADSlfzQcXOAGsIk2BZLog26CjCrxmSBfeNuuUpxNdIoWdGjzayr+Uqk4VHZ51lzD7z/xMK8sL6Bmc+ly/Oue48HCURXcfKMpnGm1G4BjVcW241T909FMDfSDD25VhXUZKUDcKufVBLbedFLROrbai+ip0FyUql8aJlPxttfrM+/GOjHiJ05oiDraU6TO0r8XSgmkQqLeGEso5ieu41XwBZR7cL7B6IolbdTW4suaqRR2mU6LsheIyfg2iblQM1jjdkzh4PRgQsTm8EBiogjjq25g4uaezkUfqpdByQ1YxppcVr0i9HtN1JDBmxCzd/xINTDrdW+4ldHo22t4GTWEpFYZMMhct6vg0yVaNSzA998HqVFE9hkuxnRbnkyOm9MUwcKs=
-    - SFTP_KEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDWqo8lkyeVGWZNL5feluXaGztdxaLijj6EzAJU4txF6fGMIXnSMuvZuIxJhK+6kCyA4Kfm8vdoNEA3f7K7oBNqD7CbeZzfegRE//D+5FvFNWU+kmGJGjveG0C3ydLq6kSnFB26QTuU+X7xfKaI3uiGWmlVk4bSyP+Qz+wI3IwLvkn7CHvi7Qh9uZdomExzy/TdMYIi33+2rc3se4+rTRlyIgwALss1RK+2gm+7ZB4meCp4wL9W9Azq4QDPsVsm8sdNASvFRrq69rh9Jp9kTjJKmnnU+bdzQfVoUTI3oMgS/XC3yFr/HNj/++kU1z+ISYdGfmXemcLRlCd3WHEtQ+9vupg7IwCb0S1sCx/1KhLpmwUXr55P8qi3dQx3tDNdaGXIvYIVU9TwaFkMEuxJLMPvBgspmPELnrRx8Guw7t9Fzag/UICW6wlnyr5MDt/4tgnocs3kmzG/LCy5BnRXZbggX20AnzH7M0TDhcrsDv1ZlJ/pvA6XCSJtjVfAJWrhAxf7tZoKYMO7uRnMrYDC5zNiCi8rsBUiRQ8QJiRlKFGhgGwkbx1ayphRrLM6ynA042xWH/sIB2qA2ULQh5OFQzUOOcmhZF0aFnIupyA0VzVq4KZam3KQfUPchbCLWujeYfMqO42Ne5W7S3a8F8G66YXa6P/Pry5vSaZp5TkdumjcmQ==
-
 
 script:
   - jekyll build
@@ -17,8 +11,7 @@ install:
   - gem install bundler
   - bundle install
 after_success:
-  - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
-  - curl --ftp-create-dirs -T filename --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@notebook.michaelhabib.name
+
 branches:
   only:
     - master

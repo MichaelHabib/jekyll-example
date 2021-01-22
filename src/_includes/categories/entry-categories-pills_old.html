@@ -1,0 +1,6 @@
+{% for category in include.categories %}
+{% assign category_archive = site.archives | where: "type", "category" | where: "title", category |first %}
+<a href="{{ category_archive.url }}" class="badge badge-secondary">
+    {{ category_archive.title }}
+</a>
+{% endfor %}
