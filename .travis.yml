@@ -1,3 +1,5 @@
+os: linux
+dis: xenial
 language: ruby
 rvm:
   - 2.6.3
@@ -36,7 +38,6 @@ addons:
       - libcurl4-openssl-dev
 git:
   submodules: true
-sudo: false
 cache: bundler
 notifications:
   email: false
