@@ -3,15 +3,27 @@ rvm:
   - 2.6.3
 env:
 
-script:
-  - jekyll build
+
 before_install:
   - git submodule update --init --recursive
 install:
   - gem install bundler
   - bundle install
+script:
+  - jekyll build
+  - git checkout -b pages-html
+  - mv .gitignore .gitignore-original
+  - cp .gitignore-travis-ci .gitignore
+  - git add -A
+  - git commit -m "auto commited generated HTML"
+  - git push -u origin pages-html
 after_success:
 
+after_failure:
+
+before_deploy:
+after_deploy:
+after_script:
 branches:
   only:
     - master
