@@ -11,21 +11,22 @@ before_install:
 install:
 - gem install bundler
 - bundle install
+
+before_script:
+
 script:
 - jekyll build .
-- sh travis-push-site.sh
 
 after_success: 
 after_failure: 
 before_deploy: 
 after_deploy: 
-after_script: 
+after_script:
+  - sh travis-push-site.sh
 branches:
   only:
   - master
-  - gh-pages
-  - "/^deploy-.*$/"
-  - "/pages-(.*)/"
+
 addons:
   apt:
     packages:
