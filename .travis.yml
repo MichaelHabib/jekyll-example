@@ -2,40 +2,37 @@ os: linux
 dis: xenial
 language: ruby
 rvm:
-  - 2.6.3
+- 2.6.3
 env:
-
+  global:
+    secure: x5icvCtXXa2dFQXOy9OdQP5obIDLMt351OMLBw4iU/NYLOEJGolrMbHgMO5RhN0lw7R0/TG4lvPL7eXwW1muezyOo74I/g6NpczzFcxxFiIdx21tTdZ38HB5iNmKz2k3DtrIZMdh65EEIcdc7Ol4XaaiyFf9lMOEm/K/omspkjG/0memIdFG4SJ2j0LEVRD5VM2q4yLrfKE/2Dyeu+XVK1vq6l8PystM0aN09iH+w5YoMGoFxTX1KN1rKXeePHM+baONEhL5cXmH4JcvnW/7hd9ZaHGLxYvWRTixuqIFeiJQBr3V0P8dX5NV0lac2BrvQFbj8PrmfuYoQESqJIz6Z1fF6ctmWe0OWj7VYySC9MzlvDK4HXAjNoyKiGDiq3YmXx4aXgVbmfJQoRFi4H+W581y6lQFt1N7p2TaHaTt3xP5KaEGbMo0CWN47WVUbIPyyjLwhxu+eToSElW3l+HMdmVFvkweQtp29LNXBYkLpU+kilLCEQlUcZjB0YBqOfCh2b2zE8qvgToOq+22f0keB8sM62+Hvk2hra8vrefp8fV8Oo8hqDahaHxD5KUueYnJpYeMvo2jo892ajzQPKwTrKkG7+IJ1UrsJlqdb3iSX6re2dT9hlob5+iYqEkNXTpmtC3xUDUVqW0dGyyfm2DmcNpuz5xj25wAek2+tO3D1vU=
 
 before_install:
-  - git submodule update --init --recursive
+- git submodule update --init --recursive
 install:
-  - gem install bundler
-  - bundle install
+- gem install bundler
+- bundle install
 script:
-  - jekyll build
-  - git checkout -b pages-html
-  - mv .gitignore .gitignore-original
-  - cp .gitignore-travis-ci .gitignore
-  - git add -A
-  - git commit -m "auto commited generated HTML"
-  - git push -u origin pages-html
-after_success:
-
-after_failure:
-
-before_deploy:
-after_deploy:
-after_script:
+- jekyll build
+- cd ./_site/
+- git init
+- git commit -m "auto commited generated HTML"
+- git push -u origin pages-html
+after_success: 
+after_failure: 
+before_deploy: 
+after_deploy: 
+after_script: 
 branches:
   only:
-    - master
-    - gh-pages
-    - "/^deploy-.*$/"
-    - "/pages-(.*)/"
+  - master
+  - gh-pages
+  - "/^deploy-.*$/"
+  - "/pages-(.*)/"
 addons:
   apt:
     packages:
-      - libcurl4-openssl-dev
+    - libcurl4-openssl-dev
 git:
   submodules: true
 cache: bundler
