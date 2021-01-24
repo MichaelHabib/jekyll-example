@@ -25,12 +25,12 @@ url: "notebook.michaelhabib.name" # the base hostname & protocol for your site, 
 #theme: jekyll-theme-minimal
 
 plugins:
+  - jekyll-asciidoc
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-gist
   - jekyll-paginate
   - jekyll-archives
-  - jekyll-asciidoc
 
 
 asciidoc:
