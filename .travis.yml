@@ -5,8 +5,7 @@ rvm:
 - 2.6.3
 env:
   global:
-    secure: x5icvCtXXa2dFQXOy9OdQP5obIDLMt351OMLBw4iU/NYLOEJGolrMbHgMO5RhN0lw7R0/TG4lvPL7eXwW1muezyOo74I/g6NpczzFcxxFiIdx21tTdZ38HB5iNmKz2k3DtrIZMdh65EEIcdc7Ol4XaaiyFf9lMOEm/K/omspkjG/0memIdFG4SJ2j0LEVRD5VM2q4yLrfKE/2Dyeu+XVK1vq6l8PystM0aN09iH+w5YoMGoFxTX1KN1rKXeePHM+baONEhL5cXmH4JcvnW/7hd9ZaHGLxYvWRTixuqIFeiJQBr3V0P8dX5NV0lac2BrvQFbj8PrmfuYoQESqJIz6Z1fF6ctmWe0OWj7VYySC9MzlvDK4HXAjNoyKiGDiq3YmXx4aXgVbmfJQoRFi4H+W581y6lQFt1N7p2TaHaTt3xP5KaEGbMo0CWN47WVUbIPyyjLwhxu+eToSElW3l+HMdmVFvkweQtp29LNXBYkLpU+kilLCEQlUcZjB0YBqOfCh2b2zE8qvgToOq+22f0keB8sM62+Hvk2hra8vrefp8fV8Oo8hqDahaHxD5KUueYnJpYeMvo2jo892ajzQPKwTrKkG7+IJ1UrsJlqdb3iSX6re2dT9hlob5+iYqEkNXTpmtC3xUDUVqW0dGyyfm2DmcNpuz5xj25wAek2+tO3D1vU=
-
+    secure: yWKaljD5uws3SluhOTYzljtj4EVhTWI1/pA2ysUYySsWpyEdlCe8VKRFTnLqDA/s7zPa72QjNp4AlVEAUEMghP5IRcntIytKi3QsjskXHZJ5T/Zr6bDHEmSK9ndpYNg4PYGhMmFMFnqRQq6uYE0sQQUJKwyQ7yParCSj/B9ZUFDZjI1NbLgh2u8nxVtcAAhSs2OmZKZRYat8/N/OCnM2KV0WNawsjrD+dX42Sqsy7CWizSAY/5AuAHravq+VwL//QVsxcE2SWcQbH3L7twu5tV7YI1pO1zGDaamRrvLwNplm25TnnpusUUsliXodh37HLgQuw4tbXHp0wsWTXiUErIrzeJHl0iJS94KBTGBHLju5Il4v+Nt1/mZqS9IpSQfVC0oJ/B4AQEALpLAB3diH9cGcYhLt1LP+2YkaICgWqkYTldefOVIGmZNI828xfDn2Ii1fdKQaP9BgrWrUqL/v+Mewp/6XH2SuJbFZZ6Z6z3vPUKCahrdNcc1VuVboeR5tsQcOXZRdZZOyiEGuGRMTZz3LVlSLjof3NeG1WgzBv41L89V71/M6buKENUbU9IC5FJcdJ4BsSjJkFHq9Qq90MxSy3Vtn1nujrKMpRM4ksOWBVZ3d+BEW3JYnd/zhDniwSp152wUaiHtOXozEdJnRBkfmx4YBAQxmPntq7Q2Q1IU=
 before_install:
 - git submodule update --init --recursive
 install:
@@ -14,10 +13,8 @@ install:
 - bundle install
 script:
 - jekyll build
-- cd ./_site/
-- git init
-- git commit -m "auto commited generated HTML"
-- git push -u origin pages-html
+- sh travis-push-site.sh
+
 after_success: 
 after_failure: 
 before_deploy: 

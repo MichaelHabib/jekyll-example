@@ -52,7 +52,6 @@ jekyll serve --watch --port 3897 --host 0.0.0.0 --drafts --trace
 ** Auto generate siemap
 ** Add wiki collection to sitemap
 
-travis encrypt GH_TOKEN=816ba3b76395d55b3c3a891f019b88a309aa414f --add --com --override
 - Home Page Template Changes
 ** [ ] Custom Home Page template
 ** [ ]
