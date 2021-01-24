@@ -3,4 +3,5 @@ _dist
 .sass-cache
 .jekyll-metadata
 src/content/
+src/content/**
 !src/content/.keep
