@@ -12,7 +12,7 @@ install:
 - gem install bundler
 - bundle install
 script:
-- jekyll build
+- jekyll build .
 - sh travis-push-site.sh
 
 after_success: 
