@@ -1,4 +1,3 @@
-[submodule "src/content"]
-	path = src/content
+[submodule "src/notebook"]
+	path = src/notebook/
 	url = https://github.com/MichaelHabib/notebook
-	branch = master
