@@ -18,6 +18,8 @@ script:
 - ls -lah
 - jekyll build .
 - ls -lah
+- ls -lah ./_site
+- whereis asciidoctor
 - sh travis-push-site.sh
 
 after_success: 
