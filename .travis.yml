@@ -7,10 +7,11 @@ env:
   global:
     secure: yWKaljD5uws3SluhOTYzljtj4EVhTWI1/pA2ysUYySsWpyEdlCe8VKRFTnLqDA/s7zPa72QjNp4AlVEAUEMghP5IRcntIytKi3QsjskXHZJ5T/Zr6bDHEmSK9ndpYNg4PYGhMmFMFnqRQq6uYE0sQQUJKwyQ7yParCSj/B9ZUFDZjI1NbLgh2u8nxVtcAAhSs2OmZKZRYat8/N/OCnM2KV0WNawsjrD+dX42Sqsy7CWizSAY/5AuAHravq+VwL//QVsxcE2SWcQbH3L7twu5tV7YI1pO1zGDaamRrvLwNplm25TnnpusUUsliXodh37HLgQuw4tbXHp0wsWTXiUErIrzeJHl0iJS94KBTGBHLju5Il4v+Nt1/mZqS9IpSQfVC0oJ/B4AQEALpLAB3diH9cGcYhLt1LP+2YkaICgWqkYTldefOVIGmZNI828xfDn2Ii1fdKQaP9BgrWrUqL/v+Mewp/6XH2SuJbFZZ6Z6z3vPUKCahrdNcc1VuVboeR5tsQcOXZRdZZOyiEGuGRMTZz3LVlSLjof3NeG1WgzBv41L89V71/M6buKENUbU9IC5FJcdJ4BsSjJkFHq9Qq90MxSy3Vtn1nujrKMpRM4ksOWBVZ3d+BEW3JYnd/zhDniwSp152wUaiHtOXozEdJnRBkfmx4YBAQxmPntq7Q2Q1IU=
 before_install:
-- git submodule update --init --recursive
+
 install:
 - gem install bundler
 - bundle install
+- git submodule update --init --recursive
 
 before_script:
 

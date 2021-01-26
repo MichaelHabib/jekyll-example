@@ -1,5 +1,4 @@
 [submodule "src/content"]
 	path = src/content
-; 	url = git@github.com:MichaelHabib/notebook.git
-	url = https://github.com/MichaelHabib/notebook.git
+	url = https://github.com/MichaelHabib/notebook
 	branch = master
