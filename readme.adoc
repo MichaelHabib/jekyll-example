@@ -88,3 +88,16 @@ jekyll serve --watch --port 3897 --host 0.0.0.0 --drafts --trace
 - https://jekyllrb.com/docs/configuration/default/[All Default Config]
 - https://github.com/asciidoctor/jekyll-asciidoc[Jekyll Asciidoc]
 
+== Changelog
+
+
+=== V0.1.0
+
+=== V0.1.1
+
+=== V0.2.0
+- Upgraded to Jekyll 4.2.0
+- Updated dependencies.
+
+
+
