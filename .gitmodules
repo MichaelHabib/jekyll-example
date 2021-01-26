@@ -1,7 +1,0 @@
-[submodule "src/content"]
-	path = src/content
-	url = https://github.com/MichaelHabib/notebook
-
-[submodule "notebook"]
-	path = notebook
-	url = https://github.com/MichaelHabib/notebook
